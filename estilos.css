@@ -1,0 +1,56 @@
+*{
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+}
+
+body {
+  background-color: rgba(181, 179, 179, 0.491);
+}
+
+.titulo{
+    font-size: 20px;
+    color: gray;
+    width: 50vw; /* 50% del ancho de la ventana */
+    padding: 50px;
+}
+#titulopequeño {
+    color: gray;
+}
+.fotoprincipal {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.fotoprincipal img{
+  width: 30vw; /* 50% del ancho de la ventana */
+  height: auto; /* Ajusta la altura proporcionalmente */
+}
+ 
+.botones {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.button {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: gray;
+  padding: 20px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  }
+
+  .boton2{
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
+    padding: 10px 20px;
+    background-color: rgba(165, 42, 42, 0.559);
+    border: none;
+    border-radius: 15px; /* Ajusta este valor para hacer el botón más o menos redondeado */
+    cursor: pointer;
+  }
+
+
