@@ -1,56 +1,214 @@
-*{
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+* {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  box-sizing: border-box; /* Asegura que el padding y border no afecten el ancho/alto total */
 }
 
 body {
   background-color: rgba(181, 179, 179, 0.491);
+  margin: 0;
+  padding: 0;
 }
 
-.titulo{
-    font-size: 20px;
-    color: gray;
-    width: 50vw; /* 50% del ancho de la ventana */
-    padding: 50px;
+.titulo {
+  font-size: 20px;
+  color: gray;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
 }
+
 #titulopequeño {
-    color: gray;
+  color: gray;
+  text-transform: uppercase;
+  font-weight: bold;
 }
+
 .fotoprincipal {
   display: flex;
-  align-items: center;
-  width: 90%;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1366px; /* Limita el ancho máximo */
+  margin: 0 auto; /* Centra el contenedor */
 }
 
-.fotoprincipal img{
-  width: 30vw; /* 50% del ancho de la ventana */
-  height: auto; /* Ajusta la altura proporcionalmente */
+.imagen {
+  flex: 1; /* Ocupa la mitad izquierda */
 }
- 
+
+.imagen img {
+  width: 100%;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  object-fit: cover; /* Asegura que la imagen cubra toda la mitad sin deformarse */
+}
+
+.titulo {
+  flex: 1; /* Ocupa la mitad derecha */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
 .botones {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  position: fixed; /* Para mantener siempre visible */
+  top: 10px;
+  right: 10px;
 }
+
 .button {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 10px;
   color: gray;
-  padding: 20px 20px;
+  padding: 15px 20px;
   border: none;
   border-radius: 5px;
+  background-color: white;
+  text-decoration: none;
   cursor: pointer;
+  display: inline-block;
+}
+
+.boton2 {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: rgba(165, 42, 42, 0.559);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
+/* Media Queries */
+
+/* Resolución estándar de 1366 x 768 px */
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .fotoprincipal {
+    flex-direction: row; /* Mantén la dirección en fila */
   }
 
-  .boton2{
-    position: absolute;
-    bottom: 10px;
-    right: 50px;
-    padding: 10px 20px;
-    background-color: rgba(165, 42, 42, 0.559);
+  .imagen, .titulo {
+    width: 50%; /* Cada una ocupa la mitad de la pantalla */
+  }
+
+  .imagen img {
+    height: auto;
+  }
+}
+
+/* Tableta en modo vertical */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .fotoprincipal {
+    flex-direction: column; /* Cambia la dirección a columna */
+    position: relative; /* Asegura que los elementos absolutos se posicionen correctamente dentro de este contenedor */
+  }
+
+  .imagen {
+    position: relative; /* Mantiene la posición relativa para los elementos absolutos dentro de este contenedor */
+  }
+
+  .imagen img {
+    width: 100%;
+    height: auto;
+  }
+
+  .titulo {
+    position: absolute; /* Posiciona el título de forma absoluta */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para centrar completamente */
+    padding: 20px;
+    background-color: rgba(181, 179, 179, 0.797); /* Fondo semi-transparente para mejor legibilidad */
+    color: gray; /* Cambia el color del texto */
+    text-align: center;
+    width: 100%; /* Asegura que el título ocupe el ancho completo del contenedor */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+    z-index: 1; /* Asegura que el título esté sobre la imagen */
+  }
+
+  .botones {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Asegura que los botones estén centrados */
+    flex-wrap: nowrap; /* Evita que los botones se envuelvan a la siguiente línea */
+    margin: 20px 0;
+    position: fixed; /* Mantiene los botones siempre visibles */
+    top: 10px;
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Ajusta para centrar completamente */
+    width: auto; /* Ajusta el ancho según el contenido */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+    z-index: 2; /* Asegura que los botones estén sobre la imagen */
+  }
+  
+  .button {
+    margin: 0 10px; /* Añade espacio horizontal entre los botones */
+    color: gray;
+    padding: 15px 20px;
     border: none;
-    border-radius: 15px; /* Ajusta este valor para hacer el botón más o menos redondeado */
+    border-radius: 5px;
+    background-color: white;
+    text-decoration: none;
     cursor: pointer;
+    display: inline-block; /* Asegura que los botones se muestren en línea */
+    white-space: nowrap; /* Evita que el texto dentro del botón se envuelva */
+  }
+}
+
+/* Smartphone pequeño: 320 x 568 px */
+@media (min-width: 320px) and (max-width: 568px) {
+  .fotoprincipal {
+    flex-direction: column; /* Mantén la dirección en columna para pantallas pequeñas */
   }
 
+  .imagen {
+    height: 100vh; /* Asegura que la imagen ocupe toda la altura en smartphones */
+  }
 
+  .imagen img {
+    width: 100%;
+    height: 100vh; /* Ajusta para que la imagen ocupe toda la pantalla */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+  }
+
+  .titulo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(181, 179, 179, 0.797);
+    color: gray;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+    font-size: 1em;
+  }
+
+  .botones {
+    position: absolute;
+    top: 10px; /* Ajusta la posición vertical si es necesario */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; /* Alinea verticalmente en el centro */
+    width: 100%; /* Asegura que los botones ocupen el ancho completo del contenedor */
+    box-sizing: border-box;
+    z-index: 2;
+  }
+
+  .button {
+    font-size: 0.75em; /* Ajusta el tamaño de la fuente si es necesario */
+  }
+}
